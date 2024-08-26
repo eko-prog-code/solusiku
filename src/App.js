@@ -3,7 +3,7 @@ import { Routes, Route, Link } from 'react-router-dom';
 import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
-import './App.css'; // Tambahkan file CSS untuk styling
+import './App.css';
 import { requestForToken, onMessageListener } from './firebase/fcm';
 import { Sheet } from 'react-modal-sheet';
 
@@ -40,8 +40,14 @@ function App() {
         </div>
       </nav>
 
-      <Sheet isOpen={isSheetOpen} onClose={() => setIsSheetOpen(false)}>
+      <Sheet 
+        isOpen={isSheetOpen} 
+        onClose={() => setIsSheetOpen(false)} 
+        snapPoints={[450, 0]} // Menambahkan titik snap untuk sheet
+        initialSnap={0} // Posisi awal sheet
+      >
         <Sheet.Container>
+          <Sheet.Header /> {/* Tambahkan header untuk drag handle */}
           <Sheet.Content>
             <button className="close-sheet-button" onClick={() => setIsSheetOpen(false)}>X</button>
             <div className="modal-card-container">

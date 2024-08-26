@@ -3,7 +3,6 @@
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif; /* Modern font */
-  background-color: #f4f4f4; /* Light background for contrast */
 }
 
 .navbar {
@@ -140,7 +139,7 @@ body {
 
 .content {
   padding-top: 80px;
-  margin: 20px;
+  margin: 14px;
   background-color: #fff; /* Background for content area */
   border-radius: 8px; /* Rounded corners for content */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
