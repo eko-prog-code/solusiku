@@ -5,22 +5,35 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-  }
+    align-items: center;
+    padding: 10px 20px; /* Mengurangi padding atas */
+}
 
-  .logout-icon-container {
+h1, p {
+    max-width: 800px; /* Atur lebar maksimum agar nyaman dibaca */
+    text-align: justify; /* Rata kanan dan kiri */
+    line-height: 1.6; /* Tinggi garis untuk kenyamanan membaca */
+    margin: 0 auto 20px; /* Margin bawah untuk memberikan spasi antar elemen */
+    padding: 0 10px; /* Padding untuk memberi sedikit ruang di sisi kanan-kiri */
+}
+
+h1 {
+    margin-top: -100px; /* Mengurangi jarak atas untuk heading */
+}
+
+.logout-icon-container {
     position: fixed;
     bottom: 20px;
     left: 20px;
-  }
+}
   
-  .logout-icon {
+.logout-icon {
     width: 50px;
     height: 50px;
     cursor: pointer;
     transition: transform 0.3s;
-  }
-  
-  .logout-icon:hover {
+}
+
+.logout-icon:hover {
     transform: scale(1.1);
-  }
-  
+}

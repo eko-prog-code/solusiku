@@ -5,13 +5,11 @@ import Login from './components/Login';
 import Register from './components/Register';
 import './App.css'; // Tambahkan file CSS untuk styling
 import { requestForToken, onMessageListener } from './firebase/fcm';
+import { Sheet } from 'react-modal-sheet';
 
 function App() {
   const [notification, setNotification] = useState({ title: '', body: '' });
-
-  useEffect(() => {
-    // Anda dapat menambahkan logika untuk mengelola izin notifikasi di sini jika diperlukan
-  }, []);
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   useEffect(() => {
     requestForToken();
@@ -37,12 +35,24 @@ function App() {
           />
           <span className="navbar-text">Solusiku</span>
         </div>
-        <div className="navbar-links">
-          <Link to="/">Home</Link>
-          <Link to="/login">Login</Link>
-          <Link to="/register" className="register-link">Register</Link>
+        <div className="navbar-menu">
+          <button onClick={() => setIsSheetOpen(true)}>Menu</button>
         </div>
       </nav>
+
+      <Sheet isOpen={isSheetOpen} onClose={() => setIsSheetOpen(false)}>
+        <Sheet.Container>
+          <Sheet.Content>
+            <button className="close-sheet-button" onClick={() => setIsSheetOpen(false)}>X</button>
+            <div className="modal-card-container">
+              <Link to="/" onClick={() => setIsSheetOpen(false)} className="modal-card">Home</Link>
+              <Link to="/login" onClick={() => setIsSheetOpen(false)} className="modal-card">Login</Link>
+              <Link to="/register" onClick={() => setIsSheetOpen(false)} className="modal-card">Register</Link>
+            </div>
+          </Sheet.Content>
+        </Sheet.Container>
+        <Sheet.Backdrop onClick={() => setIsSheetOpen(false)} />
+      </Sheet>
 
       <div className="content">
         <Routes>
