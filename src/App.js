@@ -3,37 +3,12 @@ import { Routes, Route, Link } from 'react-router-dom';
 import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
-import NotificationModal from './components/NotificationModal';
 import './App.css'; // Tambahkan file CSS untuk styling
-import NotificationSettings from './NotificationSettings';
 
 function App() {
-  const [showModal, setShowModal] = useState(false);
-
   useEffect(() => {
-    setShowModal(true);
+    // Anda dapat menambahkan logika untuk mengelola izin notifikasi di sini jika diperlukan
   }, []);
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
-
-  const handleEnableNotifications = () => {
-    console.log("Push notifikasi diaktifkan");
-    setShowModal(false);
-
-    if ('Notification' in window && navigator.serviceWorker) {
-      Notification.requestPermission().then(permission => {
-        if (permission === "granted") {
-          console.log("Notifikasi diaktifkan");
-        } else {
-          console.log("Izin notifikasi ditolak");
-        }
-      });
-    } else {
-      console.log("Notifikasi tidak didukung di browser ini");
-    }
-  };
 
   return (
     <div>
@@ -60,14 +35,6 @@ function App() {
           <Route path="/register" element={<Register />} />
         </Routes>
       </div>
-      <NotificationSettings />
-
-      {showModal && (
-        <NotificationModal
-          onClose={handleCloseModal}
-          onEnableNotifications={handleEnableNotifications}
-        />
-      )}
     </div>
   );
 }
