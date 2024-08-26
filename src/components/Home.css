@@ -1,0 +1,26 @@
+/* src/components/Home.css */
+
+.home-container {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logout-icon-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+  }
+  
+  .logout-icon {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  
+  .logout-icon:hover {
+    transform: scale(1.1);
+  }
+  
