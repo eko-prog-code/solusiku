@@ -1,5 +1,5 @@
 import React from 'react';
-import { auth } from '../firebase/firebaseConfig';
+import { auth } from '../firebase/firebase';
 import { signOut } from 'firebase/auth';
 import './Home.css'; // Tambahkan file CSS untuk styling
 

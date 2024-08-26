@@ -1,25 +1,28 @@
-// src/firebase/fcm.js
-import { messaging } from './firebaseConfig';
+import { messaging } from './firebase'; // Pastikan import dari file firebase.js yang sudah diinisialisasi
 import { getToken, onMessage } from 'firebase/messaging';
 
-export const requestFCMPermission = () => {
-  return getToken(messaging, { vapidKey: 'BO2J09uLAZZxCI-JkUzse4IQM-aBQZUz4ITdz_NC7T1yksBdaH9YLoHRq5ha0ZhXOn7cB6X0SzqB4iyL90Fwtkg' })
-    .then((currentToken) => {
-      if (currentToken) {
-        console.log('FCM token:', currentToken);
-        // Kirim token ke server Anda atau simpan secara lokal
-      } else {
-        console.log('Tidak ada token registrasi yang tersedia.');
-      }
-    })
-    .catch((err) => {
-      console.error('Terjadi kesalahan saat mengambil token. ', err);
-    });
+export const requestForToken = async () => {
+  let currentToken = '';
+
+  try {
+    currentToken = await getToken(messaging, { vapidKey: 'BO2J09uLAZZxCI-JkUzse4IQM-aBQZUz4ITdz_NC7T1yksBdaH9YLoHRq5ha0ZhXOn7cB6X0SzqB4iyL90Fwtkg' });
+    if (currentToken) {
+      console.log('current token for client: ', currentToken);
+      // Save this token to your server, or use it to send notifications to this client
+    } else {
+      console.log('No registration token available. Request permission to generate one.');
+    }
+  } catch (err) {
+    console.log('An error occurred while retrieving token. ', err);
+  }
+
+  return currentToken;
 };
 
-export const onFCMMessage = () => {
-  onMessage(messaging, (payload) => {
-    console.log('Pesan diterima. ', payload);
-    // Tampilkan notifikasi atau tangani pesan
+export const onMessageListener = () =>
+  new Promise((resolve) => {
+    onMessage(messaging, (payload) => {
+      console.log('Message received. ', payload);
+      resolve(payload);
+    });
   });
-};
