@@ -80,6 +80,12 @@ h1 {
 
 /* Media query untuk perangkat dengan lebar layar kurang dari 768px */
 @media (max-width: 768px) {
+    .centered-image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 20vh;
+    }
 
     .modal-content {
         position: relative;
