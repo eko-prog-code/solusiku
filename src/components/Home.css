@@ -8,17 +8,22 @@
 
 /* Responsive image sizing */
 .centered-image {
-    width: 40%; /* Default width for PC */
-    max-width: 300px; /* Maximum width to avoid being too large */
-    height: auto; /* Maintain aspect ratio */
+    width: 40%;
+    /* Default width for PC */
+    max-width: 300px;
+    /* Maximum width to avoid being too large */
+    height: auto;
+    /* Maintain aspect ratio */
     cursor: pointer;
 }
 
 /* Adjustments for mobile devices */
 @media (max-width: 768px) {
     .centered-image {
-        width: 80%; /* Increased width for smaller screens */
-        max-width: 300px; /* Smaller maximum width on mobile */
+        width: 80%;
+        /* Increased width for smaller screens */
+        max-width: 300px;
+        /* Smaller maximum width on mobile */
     }
 }
 
@@ -33,7 +38,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-y: auto; 
+    overflow-y: auto;
 }
 
 .modal-content {
@@ -45,7 +50,7 @@
     max-width: 600px;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
     margin-top: 120px;
-    overflow-y: auto; 
+    overflow-y: auto;
 }
 
 /* Close button styling */
@@ -67,15 +72,22 @@
 }
 
 
-h1, h3, p {
-    max-width: 1200px; /* Atur lebar maksimum agar nyaman dibaca */
-    text-align: justify; /* Rata kanan dan kiri */
-    line-height: 1.6; /* Tinggi garis untuk kenyamanan membaca */
-    margin: 0 auto 0px; /* Margin bawah untuk memberikan spasi antar elemen */
+h1,
+h3,
+p {
+    max-width: 1200px;
+    /* Atur lebar maksimum agar nyaman dibaca */
+    text-align: justify;
+    /* Rata kanan dan kiri */
+    line-height: 1.6;
+    /* Tinggi garis untuk kenyamanan membaca */
+    margin: 0 auto 0px;
+    /* Margin bawah untuk memberikan spasi antar elemen */
 }
 
 h1 {
-    margin-top: -10px; /* Mengurangi jarak atas untuk heading */
+    margin-top: -10px;
+    /* Mengurangi jarak atas untuk heading */
 }
 
 /* Media query untuk perangkat dengan lebar layar kurang dari 768px */
@@ -87,6 +99,21 @@ h1 {
         height: 20vh;
     }
 
+    /* Modal styling */
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow-y: auto;
+    }
+
+
     .modal-content {
         position: relative;
         background-color: white;
@@ -96,14 +123,19 @@ h1 {
         max-width: 600px;
         box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
         margin-top: 320px;
+        overflow-y: auto;
     }
-    
-    h1, h3, p {
-        max-width: 100%; /* Lebar penuh pada perangkat mobile */
+
+    h1,
+    h3,
+    p {
+        max-width: 100%;
+        /* Lebar penuh pada perangkat mobile */
     }
 
     h1 {
-        margin-top: -120; /* Atur margin atas heading untuk tampilan mobile */
+        margin-top: -120;
+        /* Atur margin atas heading untuk tampilan mobile */
     }
 }
 
@@ -112,7 +144,7 @@ h1 {
     bottom: 20px;
     left: 20px;
 }
-  
+
 .logout-icon {
     width: 50px;
     height: 50px;
