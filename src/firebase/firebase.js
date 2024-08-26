@@ -1,18 +1,18 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { getAuth, signOut as firebaseSignOut } from "firebase/auth"; // Tambahkan signOut
 import { getDatabase } from "firebase/database";
 import { getStorage } from "firebase/storage";
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDdlwG8NuR3DsdS5jIB8WC1Ybm2Jugiluk",
-    authDomain: "solusiku-2024.firebaseapp.com",
-    databaseURL: "https://solusiku-2024-default-rtdb.firebaseio.com",
-    projectId: "solusiku-2024",
-    storageBucket: "solusiku-2024.appspot.com",
-    messagingSenderId: "91927535904",
-    appId: "1:91927535904:web:5ac48bc61e8b1d7450f745",
-    measurementId: "G-BGTCMQQZDG"
+  apiKey: "AIzaSyDdlwG8NuR3DsdS5jIB8WC1Ybm2Jugiluk",
+  authDomain: "solusiku-2024.firebaseapp.com",
+  databaseURL: "https://solusiku-2024-default-rtdb.firebaseio.com",
+  projectId: "solusiku-2024",
+  storageBucket: "solusiku-2024.appspot.com",
+  messagingSenderId: "91927535904",
+  appId: "1:91927535904:web:5ac48bc61e8b1d7450f745",
+  measurementId: "G-BGTCMQQZDG"
 };
 
 // Initialize Firebase
@@ -50,4 +50,4 @@ export const onMessageListener = () =>
     });
   });
 
-export { auth, database, storage, messaging };
+export { auth, database, storage, messaging, firebaseSignOut as signOut }; // Tambahkan signOut

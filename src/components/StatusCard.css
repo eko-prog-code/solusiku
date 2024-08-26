@@ -1,0 +1,43 @@
+/* StatusCard.css */
+
+.status-card {
+    border: 1px solid #ddd; /* Border untuk membedakan card */
+    border-radius: 8px; /* Sudut membulat */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+    padding: 16px; /* Ruang di dalam card */
+    margin: 16px 0; /* Margin atas dan bawah */
+    background-color: #fff; /* Warna latar belakang card */
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Transisi efek saat hover */
+}
+
+.status-card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Bayangan lebih dalam saat hover */
+    transform: translateY(-2px); /* Angkat card sedikit saat hover */
+}
+
+.status-card h3 {
+    margin: 0; /* Hapus margin default */
+    font-size: 1.2em; /* Ukuran font untuk judul */
+    color: #333; /* Warna teks judul */
+}
+
+.status-card p {
+    margin: 8px 0; /* Margin atas dan bawah untuk paragraf */
+    color: #666; /* Warna teks paragraf */
+    font-size: 1em; /* Ukuran font untuk paragraf */
+}
+
+.status-card button {
+    background-color: #007bff; /* Warna latar belakang tombol */
+    color: #fff; /* Warna teks tombol */
+    border: none; /* Hapus border default */
+    border-radius: 4px; /* Sudut membulat tombol */
+    padding: 8px 16px; /* Ruang di dalam tombol */
+    font-size: 1em; /* Ukuran font tombol */
+    cursor: pointer; /* Ubah kursor saat hover */
+    transition: background-color 0.3s ease; /* Transisi efek warna saat hover */
+}
+
+.status-card button:hover {
+    background-color: #0056b3; /* Warna latar belakang tombol saat hover */
+}

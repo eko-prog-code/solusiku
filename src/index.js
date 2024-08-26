@@ -1,9 +1,9 @@
-// src/index.js
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';  // Import BrowserRouter
 import './index.css';
 import App from './App';
+import { UserProvider } from './context/UserContext'; // Import UserProvider
 
 // Register Service Worker
 if ('serviceWorker' in navigator) {
@@ -20,10 +20,10 @@ if ('serviceWorker' in navigator) {
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>  {/* Bungkus App dengan BrowserRouter */}
-      <App />
+      <UserProvider>  {/* Bungkus App dengan UserProvider */}
+        <App />
+      </UserProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-

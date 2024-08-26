@@ -1,0 +1,89 @@
+/* CSS styles for Register.js */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+  }
+  
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 93%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #080808;
+    border: 2px solid black; 
+    font-size: 1rem;
+  }
+  
+  input::placeholder {
+    color: #a7a5a5;
+  }
+  
+  input:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  
+  button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff6a00;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #ff8e42;
+  }
+  
+  span {
+    font-size: 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    body {
+      padding: 20px;
+    }
+  
+    h2 {
+      font-size: 1.5rem;
+    }
+  
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      font-size: 0.9rem;
+    }
+  
+    button[type="submit"] {
+      font-size: 1rem;
+    }
+  
+    span {
+      font-size: 1.2rem;
+    }
+  }
+  

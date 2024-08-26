@@ -1,14 +1,57 @@
-import React, { useState } from 'react';
-import { auth } from '../firebase/firebase';
-import { signOut } from 'firebase/auth';
-import './Home.css'; // Tambahkan file CSS untuk styling
+import React, { useState, useEffect, useContext } from 'react';
+import { getAuth, signOut as firebaseSignOut } from 'firebase/auth';
+import { ref, onValue } from 'firebase/database';
+import { getDatabase } from 'firebase/database';
+import { useNavigate } from 'react-router-dom';
+import Status from '../components/CreateStatus';
+import StatusCard from '../components/StatusCard';
+import { UserContext } from '../context/UserContext'; 
+import './Home.css';
 
 const Home = () => {
     const [showModal, setShowModal] = useState(false);
+    const [statuses, setStatuses] = useState([]);
+    const auth = getAuth();
+    const database = getDatabase();
+    const navigate = useNavigate();
+    const { userData } = useContext(UserContext);
+
+    useEffect(() => {
+        const statusesRef = ref(database, 'statuses');
+        onValue(statusesRef, (snapshot) => {
+            const data = snapshot.val();
+            if (data) {
+                const statusesArray = Object.keys(data).map(key => ({
+                    id: key,
+                    ...data[key]
+                }));
+                setStatuses(statusesArray.reverse());
+            }
+        });
+    }, [database]);
+
+    const handleCreateStatus = () => {
+        if (!auth.currentUser) {
+            navigate('/login');
+        } else {
+            setShowModal(true);
+        }
+    };
+
+    const handleViewProfile = (userId) => {
+        if (!auth.currentUser) {
+            navigate('/login');
+        } else {
+            navigate(`/akun/${userId}`);
+        }
+    };
 
     const handleLogout = () => {
-        signOut(auth).then(() => {
+        firebaseSignOut(auth).then(() => {
             console.log('User signed out');
+            navigate('/login'); // Redirect to login after sign out
+        }).catch((error) => {
+            console.error('Error during sign out:', error);
         });
     };
 
@@ -32,8 +75,31 @@ const Home = () => {
                     src="https://firebasestorage.googleapis.com/v0/b/solusiku-2024.appspot.com/o/tanya-solusiku.png?alt=media&token=a27bff9b-8713-464e-8450-044790313125"
                     alt="Tanya SolusiKu"
                     className="centered-image"
-                    onClick={toggleModal}
+                    onClick={handleCreateStatus} // Call function to handle status creation
                 />
+            </div>
+
+            {auth.currentUser && (
+                <div className="profile-header">
+                    <h4>Hai {userData.name || 'User'}</h4>
+                    <h4>Resolvist: Dedikasikan Ide Anda untuk Inovasi!</h4>
+                </div>
+            )}
+
+            <Status userName={userData.name} /> 
+
+            <div className="status-list">
+                {statuses.length > 0 ? (
+                    statuses.map(status => (
+                        <StatusCard 
+                            key={status.id} 
+                            status={status} 
+                            onViewProfile={() => handleViewProfile(status.userId)} // Pass handler function to StatusCard
+                        />
+                    ))
+                ) : (
+                    <p>No statuses available.</p>
+                )}
             </div>
 
             {showModal && (
