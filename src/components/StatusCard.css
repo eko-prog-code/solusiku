@@ -17,8 +17,9 @@
 
 .status-card h3 {
     margin: 0; /* Hapus margin default */
-    font-size: 1.2em; /* Ukuran font untuk judul */
+    font-size: 1em; /* Ukuran font untuk judul */
     color: #333; /* Warna teks judul */
+    font-style: italic;
 }
 
 .status-card p {

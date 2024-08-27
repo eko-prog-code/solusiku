@@ -31,11 +31,7 @@ const Home = () => {
     }, [database]);
 
     const handleCreateStatus = () => {
-        if (!auth.currentUser) {
-            navigate('/login');
-        } else {
-            setShowModal(true);
-        }
+        setShowModal(true); // Selalu tampilkan modal ketika gambar diklik
     };
 
     const handleViewProfile = (userId) => {
