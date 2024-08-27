@@ -35,12 +35,8 @@ const Home = () => {
     };
 
     const handleViewProfile = (userId) => {
-        if (!auth.currentUser) {
-            navigate('/login');
-        } else {
-            navigate(`/akun/${userId}`);
-        }
-    };
+        navigate(`/akun/${userId}`);
+    };    
 
     const handleLogout = () => {
         firebaseSignOut(auth).then(() => {
