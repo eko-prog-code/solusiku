@@ -77,7 +77,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/akun/:userId" element={<Akun />} />
+            <Route path="/akun/public/:userId" element={<Akun />} />
           </Routes>
           {notification.title && (
             <div className="notification-popup">

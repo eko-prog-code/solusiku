@@ -3,8 +3,7 @@ import { useParams } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
 import { storage } from '../firebase/firebase';
 import { ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { ref as databaseRef, get, set, onValue } from 'firebase/database';
-import { getDatabase } from 'firebase/database';
+import { getDatabase, ref as databaseRef, get, set, push, onValue } from 'firebase/database';
 import ReactPlayer from 'react-player';
 import './Akun.css';
 
@@ -97,20 +96,29 @@ const Akun = () => {
     }));
   };
 
-  const handlePortfolioSubmit = (e) => {
+  const handlePortfolioSubmit = async (e) => {
     e.preventDefault();
     const database = getDatabase();
+    const updatedPortfolioData = {
+      ...portfolioData,
+      userId: userId
+    };
     const portfolioRef = databaseRef(database, `portfolios/${userId}`);
-    set(portfolioRef, portfolioData)
-      .then(() => {
-        alert('Portofolio Solusi berhasil disimpan!');
-        setShowPortfolioForm(false);
-        setSubmittedPortfolios([portfolioData, ...submittedPortfolios]);
-      })
-      .catch((error) => {
-        console.error('Error saving portfolio:', error);
-        alert('Gagal menyimpan portofolio solusi.');
-      });
+
+    try {
+      const newPortfolioRef = push(portfolioRef);
+      await set(newPortfolioRef, updatedPortfolioData);
+      alert('Portofolio Solusi berhasil disimpan!');
+      setShowPortfolioForm(false);
+      // Use this instead of fetchPortfolios as it's not defined in your code
+      const portfolios = await get(portfolioRef);
+      if (portfolios.exists()) {
+        setSubmittedPortfolios(Object.values(portfolios.val()));
+      }
+    } catch (error) {
+      console.error('Error saving portfolio:', error);
+      alert('Gagal menyimpan portofolio solusi.');
+    }
   };
 
   const handleShareClick = () => {
@@ -118,12 +126,12 @@ const Akun = () => {
     const profileLink = `${domain}/profile/${userId}`;
     navigator.clipboard.writeText(profileLink)
       .then(() => {
-        alert('Tautan profil berhasil disalin!'); // Menampilkan popup alert
+        alert('Tautan profil berhasil disalin!');
       })
       .catch(() => {
-        alert('Gagal menyalin tautan profil.'); // Menampilkan popup alert jika terjadi kesalahan
+        alert('Gagal menyalin tautan profil.');
       });
-  };  
+  };
 
   return (
     <div className="akun-container">
@@ -226,7 +234,7 @@ const Akun = () => {
                   />
                 </label>
                 <label>
-                  YouTube Trailer (Link):
+                  Link YouTube Trailer:
                   <input
                     type="text"
                     name="youtubeTrailer"
@@ -234,15 +242,14 @@ const Akun = () => {
                     onChange={handlePortfolioFormChange}
                   />
                 </label>
-                <button type="submit">Kirim</button>
+                <button type="submit">Simpan Portofolio</button>
               </form>
             )}
           </div>
         </>
       )}
 
-      {submittedPortfolios.length > 0 && (
-        <div className="unix-929-portfolio-container">
+      <div className="unix-929-portfolio-container">
         <h3 className="unix-929-portfolio-title">Portofolio Solusi</h3>
         {submittedPortfolios.reverse().map((portfolio, index) => (
           <div key={index} className="unix-929-portfolio-card">
@@ -265,8 +272,6 @@ const Akun = () => {
           </div>
         ))}
       </div>
-      
-      )}
     </div>
   );
 };
