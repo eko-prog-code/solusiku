@@ -1,104 +1,244 @@
 /* Container utama untuk halaman Akun */
 .akun-container {
-    padding: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-    font-family: Arial, sans-serif;
-  }
-  
-  /* Header profil dengan teks sapaan */
-  .profile-header {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .profile-header h2 {
-    font-size: 24px;
-    color: #f7f2f2;
-  }
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
 
-  .profile-header p {
-    font-size: 16px;
-    color: #f7f2f2;
-    text-align: center;
-  }
+/* Header profil dengan teks sapaan */
+.profile-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
 
-  .info p {
-    color: #f7f2f2;
-  }
-  
-  /* Kontainer untuk foto profil */
-  .profile-picture-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  
-  .profile-picture {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 4px solid #007bff;
-    box-shadow: 0 0 10px rgba(0, 0, 255, 0.2);
-    object-fit: cover;
-  }
-  
-  .profile-picture-placeholder {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 4px solid #007bff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #007bff;
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
-  /* Gaya untuk input file dan tombol upload */
-  input[type="file"] {
-    display: block;
-    margin: 10px auto;
-  }
-  
-  button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    display: block;
-    margin: 10px auto;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Gaya untuk info pengguna */
-  .info {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .info p {
-    font-size: 18px;
-    margin: 5px 0;
-  }
-  
-  /* Gaya untuk pesan kesalahan */
-  .error-message {
-    color: red;
-    font-size: 16px;
-    text-align: center;
-    margin-top: 10px;
-  }
+.profile-header h2 {
+  font-size: 24px;
+  color: #f7f2f2;
+}
 
-  .white-text {
-    color: white;
-  }
-  
-  
+.profile-header p {
+  font-size: 16px;
+  color: #f7f2f2;
+  text-align: center;
+}
+
+/* Gaya untuk info pengguna */
+.info {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.info p {
+  color: #f7f2f2;
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+/* Kontainer untuk foto profil */
+.profile-picture-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid #007bff;
+  box-shadow: 0 0 10px rgba(0, 0, 255, 0.2);
+  object-fit: cover;
+}
+
+.profile-picture-placeholder {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid #007bff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #007bff;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Gaya untuk input file dan tombol upload */
+input[type="file"] {
+  display: block;
+  margin: 10px auto;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  margin: 10px auto;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Gaya untuk pesan kesalahan */
+.error-message {
+  color: red;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.white-text {
+  color: white;
+}
+
+/* Professional Dashboard */
+.professional-dashboard {
+  margin-top: 20px;
+}
+
+.professional-dashboard h3 {
+  color: white;
+}
+
+.professional-dashboard button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.professional-dashboard button:hover {
+  background-color: #0056b3;
+}
+
+/* Formulir Portofolio */
+.portfolio-form {
+  margin-top: 20px;
+}
+
+.portfolio-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.portfolio-form input, .portfolio-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.portfolio-form button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.portfolio-form button:hover {
+  background-color: #218838;
+}
+
+/* Submited Portfolio */
+.submitted-portfolio {
+  margin-top: 20px;
+}
+
+.portfolio-video {
+  margin-bottom: 10px;
+  position: relative;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.portfolio-video > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.portfolio-video .react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Akun.css */
+
+.separator-line {
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  margin: 20px 0;
+}
+
+.share-icon {
+  cursor: pointer;
+  color: #007bff;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.unix-929-portfolio-container {
+  margin: 20px auto;
+  max-width: 1200px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+}
+
+.unix-929-portfolio-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.unix-929-portfolio-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.unix-929-portfolio-video {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+.unix-929-portfolio-video iframe,
+.unix-929-portfolio-video video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+.unix-929-portfolio-text {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
