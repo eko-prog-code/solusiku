@@ -167,12 +167,14 @@ button:hover {
 }
 
 .content {
-  padding-top: 80px;
-  margin: 14px;
-
+  padding: 20px; /* Adjust padding for better spacing */
+  margin: 80px auto 20px; /* Center content horizontally */
   border-radius: 8px; /* Rounded corners for content */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  max-width: 1200px; /* Maximum width for content */
+  width: 100%; /* Full width with a max-width limit */
+  box-sizing: border-box; /* Include padding in width calculation */
 }
+
 
 /* Responsive styles */
 
