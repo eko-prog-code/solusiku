@@ -24,7 +24,7 @@ body {
   input[type="text"],
   input[type="email"],
   input[type="password"] {
-    width: 93%;
+    width: 86%;
     padding: 12px;
     margin: 10px 0;
     border: none;
