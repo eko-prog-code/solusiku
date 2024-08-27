@@ -69,16 +69,19 @@ body {
 
 .modal-card-container {
   display: flex;
-  flex-direction: column; /* List cards vertically */
-  max-height: 80vh; /* Limit the height of the container */
-  overflow-y: auto; /* Enable vertical scrolling */
+  flex-direction: column;
+  max-height: 80vh;
+  overflow-y: auto;
   padding: 20px;
-  gap: 15px; /* Add space between cards */
+  gap: 15px;
   padding-top: 50px;
+  width: 100%; /* Pastikan lebar 100% */
+  box-sizing: border-box; /* Pastikan padding termasuk dalam lebar */
+  overflow-x: hidden; /* Hindari scroll horizontal */
 }
 
 .modal-card {
-  background-color: #ffffff; 
+  background-color: #ffffff;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -87,10 +90,15 @@ body {
   color: #333;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
-  display: inline-block; /* Pastikan menggunakan display inline-block */
-  width: 100%; /* Membuat ukuran penuh */
-  margin-bottom: 10px; /* Spasi antara card */
-  text-decoration: none; /* Hilangkan garis bawah pada Link */
+  width: 100%; /* Pastikan ukuran penuh pada mobile */
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .modal-card-container {
+    padding: 10px; /* Kurangi padding pada perangkat kecil */
+  }
 }
 
 .modal-card:hover,

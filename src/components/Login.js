@@ -54,7 +54,7 @@ const Login = () => {
             onClick={togglePasswordVisibility}
             style={{
               position: 'absolute',
-              right: '10px',
+              right: '30px',
               top: '50%',
               transform: 'translateY(-50%)',
               cursor: 'pointer'
@@ -66,7 +66,7 @@ const Login = () => {
         <button type="submit">Login</button>
       </form>
       {error && <p>{error}</p>}
-      
+
       {/* Display popup on successful login */}
       {showPopup && (
         <div className={styles.popup}>

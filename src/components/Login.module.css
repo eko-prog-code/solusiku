@@ -67,3 +67,9 @@
   text-align: center;
   margin-top: 10px;
 }
+
+@media (min-width: 481px) {
+  span {
+    right: 30px; /* Move to the left by 20px compared to the original 10px */
+  }
+}

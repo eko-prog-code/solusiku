@@ -63,6 +63,12 @@ body {
   span {
     font-size: 1.5rem;
   }
+
+  @media (min-width: 481px) {
+    span {
+      right: 30px; /* Move to the left by 20px compared to the original 10px */
+    }
+  }  
   
   @media (max-width: 480px) {
     body {
