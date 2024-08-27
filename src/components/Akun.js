@@ -122,8 +122,8 @@ const Akun = () => {
   };
 
   const handleShareClick = () => {
-    const domain = "https://solusiku.vercel.app/"; // Ganti dengan domain yang digunakan
-    const profileLink = `${domain}/profile/${userId}`;
+    const domain = "https://solusiku.vercel.app"; // Ganti dengan domain yang digunakan
+    const profileLink = `${domain}/akun/${userId}`;
     navigator.clipboard.writeText(profileLink)
       .then(() => {
         alert('Tautan profil berhasil disalin!');
