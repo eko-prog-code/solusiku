@@ -74,7 +74,8 @@ const Akun = () => {
   return (
     <div className="akun-container">
       <div className="profile-header">
-        <h2>Hai {userData.name || 'User'} (Sedang Online)</h2>
+        <h2>Hai {userData.name || 'User'}</h2>
+        <p>(Sedang Online)</p>
       </div>
       <div className="profile-info">
         <div className="profile-picture-container">
