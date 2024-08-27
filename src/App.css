@@ -78,20 +78,35 @@ body {
 }
 
 .modal-card {
-  background-color: #ffffff; /* White background for cards */
-  padding: 20px; /* Padding inside cards */
-  border-radius: 12px; /* Rounded corners */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  text-align: center; /* Center text */
-  font-size: 18px; /* Font size for text */
-  color: #333; /* Text color */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+  background-color: #ffffff; 
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: 18px;
+  color: #333;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  display: inline-block; /* Pastikan menggunakan display inline-block */
+  width: 100%; /* Membuat ukuran penuh */
+  margin-bottom: 10px; /* Spasi antara card */
+  text-decoration: none; /* Hilangkan garis bawah pada Link */
 }
 
-.modal-card:hover {
-  transform: scale(1.05); /* Slight zoom on hover */
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+.modal-card:hover,
+.modal-card:focus {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.modal-card:focus {
+  outline: none; /* Hilangkan outline pada focus */
+}
+
+
+.modal-card:focus {
+  outline: none; /* Hilangkan outline pada focus */
+  background-color: #ffffff; /* Pastikan background tetap putih */
 }
 
 .modal-card-container::-webkit-scrollbar {
@@ -106,6 +121,20 @@ body {
 .modal-card-container::-webkit-scrollbar-track {
   background-color: #f1f1f1; /* Scrollbar track color */
 }
+
+button {
+  outline: none; /* Hilangkan outline pada button */
+  border: none; /* Hilangkan border */
+}
+
+button:focus {
+  outline: none; /* Hilangkan outline saat focus */
+}
+
+button:hover {
+  background-color: inherit; /* Pastikan background tetap sama saat hover */
+}
+
 
 
 .navbar-links {

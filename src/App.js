@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
@@ -7,17 +7,17 @@ import Akun from './components/Akun';
 import './App.css';
 import { requestForToken, onMessageListener } from './firebase/fcm';
 import { Sheet } from 'react-modal-sheet';
-import { UserProvider } from './context/UserContext'; // Import UserProvider
+import { UserProvider, UserContext } from './context/UserContext';
 
 function App() {
   const [notification, setNotification] = useState({ title: '', body: '' });
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const navigate = useNavigate();
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
-    // Request for FCM token
     requestForToken();
 
-    // Set up message listener
     const unsubscribeMessageListener = onMessageListener().then(payload => {
       setNotification({
         title: payload.notification.title,
@@ -25,7 +25,6 @@ function App() {
       });
     }).catch(err => console.log('Failed to set up message listener: ', err));
 
-    // Clean up listener on component unmount
     return () => unsubscribeMessageListener;
   }, []);
 
@@ -49,18 +48,24 @@ function App() {
         <Sheet 
           isOpen={isSheetOpen} 
           onClose={() => setIsSheetOpen(false)} 
-          snapPoints={[450, 0]} // Snap points for sheet
-          initialSnap={0} // Initial position of sheet
+          snapPoints={[450, 0]} 
+          initialSnap={0} 
         >
           <Sheet.Container>
-            <Sheet.Header /> {/* Header for drag handle */}
+            <Sheet.Header />
             <Sheet.Content>
               <button className="close-sheet-button" onClick={() => setIsSheetOpen(false)}>X</button>
               <div className="modal-card-container">
                 <Link to="/" onClick={() => setIsSheetOpen(false)} className="modal-card">Home</Link>
                 <Link to="/login" onClick={() => setIsSheetOpen(false)} className="modal-card">Login</Link>
                 <Link to="/register" onClick={() => setIsSheetOpen(false)} className="modal-card">Register</Link>
-                <Link to="/akun" onClick={() => setIsSheetOpen(false)} className="modal-card">Akun Ku</Link>
+                <Link
+                  to={user ? `/akun/${user.uid}` : '/login'} 
+                  onClick={() => setIsSheetOpen(false)}
+                  className="modal-card"
+                >
+                  Akun Ku
+                </Link>
               </div>
             </Sheet.Content>
           </Sheet.Container>
@@ -72,7 +77,6 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            {/* Add the dynamic route with userId */}
             <Route path="/akun/:userId" element={<Akun />} />
           </Routes>
           {notification.title && (

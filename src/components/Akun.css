@@ -14,7 +14,11 @@
   
   .profile-header h2 {
     font-size: 24px;
-    color: #333;
+    color: #f7f2f2;
+  }
+
+  .info p {
+    color: #f7f2f2;
   }
   
   /* Kontainer untuk foto profil */
@@ -86,4 +90,9 @@
     text-align: center;
     margin-top: 10px;
   }
+
+  .white-text {
+    color: white;
+  }
+  
   
