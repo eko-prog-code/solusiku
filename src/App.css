@@ -175,8 +175,8 @@ button:hover {
 }
 
 .content {
-  padding: 20px; /* Adjust padding for better spacing */
-  margin: 80px auto 20px; /* Center content horizontally */
+  padding: 10px; /* Adjust padding for better spacing */
+  margin: 80px auto 10px; /* Center content horizontally */
   border-radius: 8px; /* Rounded corners for content */
   max-width: 1200px; /* Maximum width for content */
   width: 100%; /* Full width with a max-width limit */
