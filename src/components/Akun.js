@@ -56,8 +56,8 @@ const Akun = () => {
       const portfolioRef = databaseRef(database, `portfolios/${userId}`);
       onValue(portfolioRef, (snapshot) => {
         if (snapshot.exists()) {
-          const portfolios = Object.values(snapshot.val());
-          setSubmittedPortfolios(portfolios.reverse());
+          const portfolios = Object.values(snapshot.val()).reverse(); // Reverse here
+          setSubmittedPortfolios(portfolios);
         }
       });
     }
@@ -129,7 +129,6 @@ const Akun = () => {
       await set(newPortfolioRef, updatedPortfolioData);
       alert('Portofolio Solusi berhasil disimpan!');
       setShowPortfolioForm(false);
-      setSubmittedPortfolios((prevPortfolios) => [updatedPortfolioData, ...prevPortfolios]);
     } catch (error) {
       console.error('Error saving portfolio:', error);
       alert('Gagal menyimpan portofolio solusi.');
