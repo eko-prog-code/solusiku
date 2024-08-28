@@ -4,8 +4,8 @@ import { UserContext } from '../context/UserContext';
 import { storage } from '../firebase/firebase';
 import { ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { getDatabase, ref as databaseRef, get, set, push, onValue } from 'firebase/database';
-import ReactPlayer from 'react-player';
 import './Akun.css';
+import ReactPlayer from 'react-player';
 
 const Akun = () => {
   const { userId } = useParams();
@@ -56,7 +56,8 @@ const Akun = () => {
       const portfolioRef = databaseRef(database, `portfolios/${userId}`);
       onValue(portfolioRef, (snapshot) => {
         if (snapshot.exists()) {
-          const portfolios = Object.values(snapshot.val()).reverse(); // Reverse here
+          const portfolios = Object.values(snapshot.val())
+            .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp)); // Sorting by timestamp
           setSubmittedPortfolios(portfolios);
         }
       });
@@ -120,7 +121,8 @@ const Akun = () => {
     const database = getDatabase();
     const updatedPortfolioData = {
       ...portfolioData,
-      userId: userId
+      userId: userId,
+      timestamp: new Date().toISOString() // Adding timestamp here
     };
     const portfolioRef = databaseRef(database, `portfolios/${userId}`);
 
