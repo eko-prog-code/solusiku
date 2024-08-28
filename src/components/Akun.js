@@ -57,7 +57,7 @@ const Akun = () => {
       onValue(portfolioRef, (snapshot) => {
         if (snapshot.exists()) {
           const portfolios = Object.values(snapshot.val());
-          setSubmittedPortfolios(portfolios);
+          setSubmittedPortfolios(portfolios.reverse());
         }
       });
     }
@@ -97,11 +97,8 @@ const Akun = () => {
   };
 
   const formatPitchingFee = (value) => {
-    // Menghilangkan titik yang sudah ada
     value = value.replace(/\./g, '');
-    // Memastikan nilai adalah angka dan cukup panjang untuk diformat
     if (!isNaN(value) && value.length > 3) {
-      // Menambahkan titik setiap 3 digit
       value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
     }
     return value;
@@ -132,10 +129,7 @@ const Akun = () => {
       await set(newPortfolioRef, updatedPortfolioData);
       alert('Portofolio Solusi berhasil disimpan!');
       setShowPortfolioForm(false);
-      const portfolios = await get(portfolioRef);
-      if (portfolios.exists()) {
-        setSubmittedPortfolios(Object.values(portfolios.val()));
-      }
+      setSubmittedPortfolios((prevPortfolios) => [updatedPortfolioData, ...prevPortfolios]);
     } catch (error) {
       console.error('Error saving portfolio:', error);
       alert('Gagal menyimpan portofolio solusi.');

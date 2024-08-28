@@ -246,9 +246,21 @@ button:hover {
 /* Adjustments for mobile devices */
 @media (max-width: 768px) {
   .akun-container {
-    padding: 10px;
+    padding: 6px;
     max-width: 800px;
     margin: 0 auto;
     font-family: Arial, sans-serif;
   }
 }
+
+/* Adjustments for devices smaller than 480px */
+@media (max-width: 480px) {
+  .akun-container {
+    padding: 4px;
+    max-width: 100%; /* Ensures the container takes full width on very small screens */
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    font-size: 14px; /* Adjust font size for readability */
+  }
+}
+
