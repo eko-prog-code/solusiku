@@ -1,5 +1,3 @@
-/* StatusCard.css */
-
 .status-card {
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -51,7 +49,7 @@
     max-height: 300px;
     overflow-y: auto;
     display: flex;
-    flex-direction: column-reverse; /* Tampilkan komentar terbaru di atas */
+    flex-direction: column-reverse; /* Display newest comments on top */
     flex-grow: 1;
 }
 
@@ -85,14 +83,12 @@
     background-color: #0056b3;
 }
 
-/* Update CSS untuk Sheet Content */
 .Sheet-Content {
     display: flex;
     flex-direction: column;
     height: 100%;
 }
 
-/* Pastikan comments-list mengisi ruang yang tersedia */
 .Sheet-Content .comments-list {
     flex-grow: 1;
 }
@@ -100,11 +96,11 @@
 .comment {
     margin-bottom: 10px;
     padding-bottom: 10px;
-    border-bottom: 1px solid #ddd; /* Garis pemisah */
+    border-bottom: 1px solid #ddd; /* Divider */
 }
 
 .comment:last-child {
-    border-bottom: none; /* Menghapus garis pemisah terakhir */
+    border-bottom: none; /* Remove the last divider */
 }
 
 .add-comment {

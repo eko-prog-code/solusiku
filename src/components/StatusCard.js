@@ -6,21 +6,18 @@ import { Sheet } from 'react-modal-sheet';
 import './StatusCard.css';
 
 const StatusCard = ({ status, onViewProfile }) => {
-    // Pastikan kita mengakses field 'status' sebagai 'statusText' jika field dalam object bernama 'status'
     const { status: statusText, userName, createdAt, id: statusId } = status;
-    const [showComments, setShowComments] = useState(false);
+    const [isSheetOpen, setIsSheetOpen] = useState(false);
     const [commentText, setCommentText] = useState('');
     const [comments, setComments] = useState([]);
     const { userData } = useContext(UserContext);
     const database = getDatabase();
 
-    // Format tanggal
     const date = createdAt ? new Date(createdAt).toLocaleString() : 'Tanggal tidak tersedia';
 
     const toggleCommentsModal = () => {
-        setShowComments(!showComments);
-        if (!showComments) {
-            // Fetch comments from Firebase
+        setIsSheetOpen(!isSheetOpen);
+        if (!isSheetOpen) {
             const commentsRef = ref(database, `statuses/${statusId}/comments`);
             onValue(commentsRef, (snapshot) => {
                 const data = snapshot.val();
@@ -29,7 +26,6 @@ const StatusCard = ({ status, onViewProfile }) => {
                         id: key,
                         ...data[key]
                     }));
-                    // Urutkan komentar terbaru di atas
                     setComments(commentsArray.reverse());
                 } else {
                     setComments([]);
@@ -60,7 +56,12 @@ const StatusCard = ({ status, onViewProfile }) => {
             <button onClick={onViewProfile}>View Profile</button>
             <button className="comment-button" onClick={toggleCommentsModal}>💬</button>
 
-            <Sheet isOpen={showComments} onClose={() => setShowComments(false)}>
+            <Sheet
+                isOpen={isSheetOpen}
+                onClose={() => setIsSheetOpen(false)}
+                snapPoints={[450, 0]} // Adjust the height of the sheet modal
+                initialSnap={0} // Open the sheet to the first snap point (450px)
+            >
                 <Sheet.Container>
                     <Sheet.Header />
                     <Sheet.Content>
@@ -89,7 +90,6 @@ const StatusCard = ({ status, onViewProfile }) => {
                 <Sheet.Backdrop />
             </Sheet>
         </div>
-
     );
 };
 
