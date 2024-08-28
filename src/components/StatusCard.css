@@ -1,44 +1,116 @@
 /* StatusCard.css */
 
 .status-card {
-    border: 1px solid #ddd; /* Border untuk membedakan card */
-    border-radius: 8px; /* Sudut membulat */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
-    padding: 16px; /* Ruang di dalam card */
-    margin: 16px 0; /* Margin atas dan bawah */
-    background-color: #fff; /* Warna latar belakang card */
-    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Transisi efek saat hover */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    margin: 16px 0;
+    background-color: #fff;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .status-card:hover {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Bayangan lebih dalam saat hover */
-    transform: translateY(-2px); /* Angkat card sedikit saat hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
 }
 
 .status-card h3 {
-    margin: 0; /* Hapus margin default */
-    font-size: 1em; /* Ukuran font untuk judul */
-    color: #333; /* Warna teks judul */
+    margin: 0;
+    font-size: 1em;
+    color: #333;
     font-style: italic;
 }
 
 .status-card p {
-    margin: 8px 0; /* Margin atas dan bawah untuk paragraf */
-    color: #666; /* Warna teks paragraf */
-    font-size: 1em; /* Ukuran font untuk paragraf */
+    margin: 8px 0;
+    color: #666;
+    font-size: 1em;
 }
 
 .status-card button {
-    background-color: #007bff; /* Warna latar belakang tombol */
-    color: #fff; /* Warna teks tombol */
-    border: none; /* Hapus border default */
-    border-radius: 4px; /* Sudut membulat tombol */
-    padding: 8px 16px; /* Ruang di dalam tombol */
-    font-size: 1em; /* Ukuran font tombol */
-    cursor: pointer; /* Ubah kursor saat hover */
-    transition: background-color 0.3s ease; /* Transisi efek warna saat hover */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .status-card button:hover {
-    background-color: #0056b3; /* Warna latar belakang tombol saat hover */
+    background-color: #0056b3;
+}
+
+.comment-button {
+    margin-top: 10px;
+}
+
+.comments-list {
+    max-height: 300px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column-reverse; /* Tampilkan komentar terbaru di atas */
+    flex-grow: 1;
+}
+
+.add-comment {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    background: rgb(40, 0, 151);
+    border-top: 1px solid #ddd;
+    color: black;
+}
+
+.add-comment input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: black;
+}
+
+.add-comment button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add-comment button:hover {
+    background-color: #0056b3;
+}
+
+/* Update CSS untuk Sheet Content */
+.Sheet-Content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Pastikan comments-list mengisi ruang yang tersedia */
+.Sheet-Content .comments-list {
+    flex-grow: 1;
+}
+
+.comment {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd; /* Garis pemisah */
+}
+
+.comment:last-child {
+    border-bottom: none; /* Menghapus garis pemisah terakhir */
+}
+
+.add-comment {
+    margin-top: 15px;
+}
+
+.comments-list {
+    margin-top: 10px;
 }
