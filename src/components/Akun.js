@@ -96,6 +96,28 @@ const Akun = () => {
     }));
   };
 
+  const formatPitchingFee = (value) => {
+    // Menghilangkan titik yang sudah ada
+    value = value.replace(/\./g, '');
+    // Memastikan nilai adalah angka dan cukup panjang untuk diformat
+    if (!isNaN(value) && value.length > 3) {
+      // Menambahkan titik setiap 3 digit
+      value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    }
+    return value;
+  };
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    if (name === 'pitchingFee') {
+      const formattedValue = formatPitchingFee(value);
+      setPortfolioData((prevData) => ({
+        ...prevData,
+        [name]: formattedValue
+      }));
+    }
+  };
+
   const handlePortfolioSubmit = async (e) => {
     e.preventDefault();
     const database = getDatabase();
@@ -110,7 +132,6 @@ const Akun = () => {
       await set(newPortfolioRef, updatedPortfolioData);
       alert('Portofolio Solusi berhasil disimpan!');
       setShowPortfolioForm(false);
-      // Use this instead of fetchPortfolios as it's not defined in your code
       const portfolios = await get(portfolioRef);
       if (portfolios.exists()) {
         setSubmittedPortfolios(Object.values(portfolios.val()));
@@ -131,6 +152,14 @@ const Akun = () => {
       .catch(() => {
         alert('Gagal menyalin tautan profil.');
       });
+  };
+
+  const formatDisplayFee = (fee) => {
+    let value = fee.replace(/\./g, '');
+    if (!isNaN(value) && value.length > 3) {
+      value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    }
+    return value;
   };
 
   return (
@@ -222,6 +251,7 @@ const Akun = () => {
                     name="pitchingFee"
                     value={portfolioData.pitchingFee}
                     onChange={handlePortfolioFormChange}
+                    onBlur={handleBlur}
                   />
                 </label>
                 <label>
@@ -269,7 +299,7 @@ const Akun = () => {
             )}
             <p className="unix-929-portfolio-text"><strong>Badge dan Pencapaian:</strong> {portfolio.badges}</p>
             <p className="unix-929-portfolio-text"><strong>Testimoni Klien:</strong> {portfolio.testimonials}</p>
-            <p className="unix-929-portfolio-text"><strong>Pitching Fee:</strong> {portfolio.pitchingFee}</p>
+            <p className="unix-929-portfolio-text"><strong>Pitching Fee:</strong> {formatDisplayFee(portfolio.pitchingFee)}</p>
             <p className="unix-929-portfolio-text"><strong>Date Open Meeting:</strong> {portfolio.openMeetingDate}</p>
           </div>
         ))}
