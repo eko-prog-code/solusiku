@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import Home from './components/Home';
+import Search from './components/Search'; // Import komponen Search
 import Login from './components/Login';
 import Register from './components/Register';
 import Akun from './components/Akun';
@@ -57,6 +58,7 @@ function App() {
               <button className="close-sheet-button" onClick={() => setIsSheetOpen(false)}>X</button>
               <div className="modal-card-container">
                 <Link to="/" onClick={() => setIsSheetOpen(false)} className="modal-card">Home</Link>
+                <Link to="/search" onClick={() => setIsSheetOpen(false)} className="modal-card">Search</Link> {/* Tambahkan Link ke halaman Search */}
                 <Link to="/login" onClick={() => setIsSheetOpen(false)} className="modal-card">Login</Link>
                 <Link to="/register" onClick={() => setIsSheetOpen(false)} className="modal-card">Register</Link>
                 <Link
@@ -75,6 +77,7 @@ function App() {
         <div className="content">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/search" element={<Search />} /> {/* Tambahkan Route untuk Search di bawah Home */}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/akun/:userId" element={<Akun />} />

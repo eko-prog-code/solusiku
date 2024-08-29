@@ -22,7 +22,8 @@ const Akun = () => {
     testimonials: '',
     pitchingFee: '',
     openMeetingDate: '',
-    youtubeTrailer: ''
+    youtubeTrailer: '',
+    kategori: ''
   });
   const [submittedPortfolios, setSubmittedPortfolios] = useState([]);
 
@@ -122,6 +123,8 @@ const Akun = () => {
     const updatedPortfolioData = {
       ...portfolioData,
       userId: userId,
+      userName: userData.name,
+      userImage: profilePicUrl,
       timestamp: new Date().toISOString() // Adding timestamp here
     };
     const portfolioRef = databaseRef(database, `portfolios/${userId}`);
@@ -216,6 +219,16 @@ const Akun = () => {
                   />
                 </label>
                 <label>
+                  Kategori:
+                  <input
+                    type="text"
+                    name="kategori"
+                    value={portfolioData.kategori}
+                    onChange={handlePortfolioFormChange}
+                  />
+                </label>
+
+                <label>
                   Masalah yang Diselesaikan:
                   <textarea
                     name="solutionDescription"
@@ -279,6 +292,7 @@ const Akun = () => {
         {submittedPortfolios.reverse().map((portfolio, index) => (
           <div key={index} className="unix-929-portfolio-card">
             <h4>Portofolio #{index + 1}</h4>
+            <p className="unix-929-portfolio-text"><strong>Kategori:</strong> {portfolio.kategori}</p>
             <p className="unix-929-portfolio-text"><strong>Video Core Problem:</strong></p>
             {portfolio.coreProblem && (
               <div className="unix-929-portfolio-video">
