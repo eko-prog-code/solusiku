@@ -74,8 +74,8 @@ const Home = () => {
             {auth.currentUser && (
                 <div className="profile-header">
                     <h4>Hai {userData.name || 'User'}</h4>
-                    <p>Profesi Baru Anda: Resolvist</p>
-                    <p>Dedikasikan Ide Anda untuk Inovasi!</p>
+                    <p>Resolvist</p>
+                    <p>Wujudkan Ide Inovatif & Solusi Terbaik!</p>
                 </div>
             )}
 

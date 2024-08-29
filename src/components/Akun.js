@@ -315,7 +315,7 @@ const Akun = () => {
                   />
                 </label>
                 <label>
-                  Kategori:
+                  Kategori Solusi:
                   <input
                     type="text"
                     name="kategori"
@@ -368,7 +368,7 @@ const Akun = () => {
                   />
                 </label>
                 <label>
-                  Link YouTube Trailer:
+                  Link YouTube Video solusi:
                   <input
                     type="text"
                     name="youtubeTrailer"
@@ -388,7 +388,7 @@ const Akun = () => {
         {submittedPortfolios.reverse().map((portfolio, index) => (
           <div key={index} className="unix-929-portfolio-card">
             <h4>Portofolio #{index + 1}</h4>
-            <p className="unix-929-portfolio-text"><strong>Kategori:</strong> {portfolio.kategori}</p>
+            <p className="unix-929-portfolio-text"><strong>Kategori Solusi:</strong> {portfolio.kategori}</p>
             <p className="unix-929-portfolio-text"><strong>Video Core Problem:</strong></p>
             {portfolio.coreProblem && (
               <div className="unix-929-portfolio-video">
@@ -396,7 +396,7 @@ const Akun = () => {
               </div>
             )}
             <p className="unix-929-portfolio-text"><strong>Masalah yang Diselesaikan:</strong> {portfolio.solutionDescription}</p>
-            <p className="unix-929-portfolio-text"><strong>Trailer Video We have the solution to the problem:</strong></p>
+            <p className="unix-929-portfolio-text"><strong>Trailer Video solusi:</strong></p>
             {portfolio.youtubeTrailer && (
               <div className="unix-929-portfolio-video">
                 <ReactPlayer url={portfolio.youtubeTrailer} controls={true} />
