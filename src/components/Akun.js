@@ -436,7 +436,7 @@ const Akun = () => {
                     handleDeleteImage(url);
                   }}
                 >
-                  Delete
+                  ❌
                 </button>
               )}
               <img
@@ -447,8 +447,6 @@ const Akun = () => {
             </div>
           ))}
         </div>
-
-
 
         {zoomedImage && (
           <div className="zoomed-image-overlay" onClick={() => setZoomedImage(null)}>
