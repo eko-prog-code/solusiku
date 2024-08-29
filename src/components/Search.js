@@ -54,7 +54,7 @@ const Search = () => {
 
   return (
     <div style={{ padding: '20px' }}>
-        <h3 style={{ textAlign: 'center', marginBottom: '20px', color: '#fff' }}>Search Akun profile & Portfolio Solusi</h3>
+        <h3 style={{ textAlign: 'center', marginBottom: '20px', color: '#fff' }}>Search Portfolio Solusi</h3>
       <input
         type="text"
         placeholder="Cari berdasarkan kategori..."
