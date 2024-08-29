@@ -264,3 +264,89 @@ button:hover {
   }
 }
 
+.price-list-section h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+/* Styling for image container */
+.price-list-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Styling for individual images */
+.price-list-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* File input and button styling */
+.price-list-section input[type="file"],
+.price-list-section button {
+  margin-top: 10px;
+  display: block;
+}
+
+.price-list-image-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.price-list-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.delete-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 3px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+}
+
+.price-list-image-container {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+}
+
+.price-list-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.price-list-title {
+  color: white;
+}
+
+.zoomed-image-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.zoomed-image {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
